@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+</head>
+<body>
+<div id="main">
+    <a href="cart.html">Cart</a>
+
+</div>
+</body>
+
+<style>
+    img{
+        height:100px;
+        width:100px;
+    }
+    body{
+        display: flex;
+    }
+    div{
+        margin: 5px;
+    }
+</style>
+<script>
+    let items = [
+        {name: 'IPhone X',
+        price: '1000$',
+        pic: 'iphonex.jpg'},
+        {name: 'IPhone XS',
+        price: '1200$',
+        pic: 'iphonexs.jpg'},
+        {name: 'IPhone XS Max',
+        price: '1400$',
+        pic: 'iphonexsmax.png'},
+        {name: 'IPhone XR',
+        price: '1000$',
+        pic: 'iphonexr.jpg'},
+        {name: 'IPhone 8',
+        price: '700$',
+        pic: 'iphone8.png'},
+        {name: 'IPhone 7',
+        price: '600$',
+        pic: 'iphone7.png'},
+    ]
+        let addToCart = (object)=>{
+        let items1011 = JSON.parse(localStorage.items1011)
+            items1011.push(items[object])
+            console.log(items1011)
+            localStorage.items1011 = JSON.stringify(items1011)
+            
+    }
+    if(localStorage.items1011 == undefined){
+        localStorage.items1011 = JSON.stringify([])
+    }
+    for(x=0; x<=5; x++){
+        console.log(items[x]);
+        let a = document.createElement('div');
+        a.style = 'display: inline-block';
+        a.innerHTML =
+            '<img src="'+items[x].pic+'"> <p>'+items[x].name+'</p> <p>'+items[x].price+'</p> <button onclick="addToCart('+x+')">Add to cart</button>';
+        document.getElementById('main').appendChild(a)
+    }
+    let cartElements = JSON.parse(localStorage.items1011).length
+    console.log(cartElements)
+
+</script>
+</html>
