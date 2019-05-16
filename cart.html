@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<a href="index.html">Back to shop</a>
+<div id='main'>
+</div>
+</body>
+<script>
+    let deleteFromCart = (index)=>{
+        cartElements.splice(index, 1);
+        localStorage.items1011 = JSON.stringify(cartElements);
+        document.getElementById('main').innerHTML = '';
+        for (x = 0; x <= cartElements.length; x++) {
+            let a = document.createElement('div');
+            a.style = 'display: inline-block';
+            a.innerHTML =
+                '<img src="' + cartElements[x].pic + '"> <p>' + cartElements[x].name + '</p> <p>' + cartElements[x].price + '</p> <button onclick="deleteFromCart('+x+')">Delete from cart</button>\'';
+            document.getElementById('main').appendChild(a)
+        }
+    };
+    if(localStorage.items1011 === undefined) {
+        localStorage.items1011 = JSON.stringify([])}
+
+        let cartElements = JSON.parse(localStorage.items1011);
+        for (x = 0; x <= cartElements.length; x++) {
+            let a = document.createElement('div');
+            a.style = 'display: inline-block';
+            a.innerHTML =
+                '<img src="' + cartElements[x].pic + '"> <p>' + cartElements[x].name + '</p> <p>' + cartElements[x].price + '</p> <button onclick="deleteFromCart('+x+')">Delete from cart</button>\'';
+            document.getElementById('main').appendChild(a)
+        }
+</script>
+<style>
+    img{
+        height:100px;
+        width:100px;
+    }
+    body{
+        display: flex;
+    }
+    div{
+        margin: 5px;
+    }
+</style>
+</html>

@@ -7,7 +7,7 @@
 <body>
 <div id="main">
     <a href="cart.html">Cart</a>
-
+    <div id="2"></div>
 </div>
 </body>
 
@@ -43,15 +43,16 @@
         {name: 'IPhone 7',
         price: '600$',
         pic: 'iphone7.png'},
-    ]
+    ];
         let addToCart = (object)=>{
-        let items1011 = JSON.parse(localStorage.items1011)
-            items1011.push(items[object])
-            console.log(items1011)
+        let items1011 = JSON.parse(localStorage.items1011);
+            items1011.push(items[object]);
+            console.log(items1011);
             localStorage.items1011 = JSON.stringify(items1011)
-            
-    }
-    if(localStorage.items1011 == undefined){
+            let cartElements = JSON.parse(localStorage.items1011).length
+            document.getElementById('2').innerHTML = cartElements
+    };
+    if(localStorage.items1011 === undefined){
         localStorage.items1011 = JSON.stringify([])
     }
     for(x=0; x<=5; x++){
@@ -62,8 +63,5 @@
             '<img src="'+items[x].pic+'"> <p>'+items[x].name+'</p> <p>'+items[x].price+'</p> <button onclick="addToCart('+x+')">Add to cart</button>';
         document.getElementById('main').appendChild(a)
     }
-    let cartElements = JSON.parse(localStorage.items1011).length
-    console.log(cartElements)
-
 </script>
 </html>
